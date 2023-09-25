@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.araujowp.samplebank.domain.user.User;
 import com.araujowp.samplebank.domain.user.UserType;
+import com.araujowp.samplebank.dtos.UserDTO;
 import com.araujowp.samplebank.repositories.UserRepository;
 
 @Service
@@ -31,6 +32,12 @@ public class UserService {
 
 	public void saveUser(User user) {
 		this.userRepository.save(user);
+	}
+
+	public User createUser(UserDTO data) {
+		User newUser = new User(data);
+		this.saveUser(newUser);
+		return newUser; 
 	}
 	
 }

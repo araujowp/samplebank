@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.araujowp.samplebank.dtos.UserDTO;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -26,6 +28,15 @@ import lombok.Setter;
 @NoArgsConstructor
 public class User {
 	
+	public User(UserDTO data) {
+		this.firstName = data.getFirtName();
+		this.lastName = data.getLastName();
+		this.balance = data.getBalance();
+		this.userType = data.getUserType();
+		this.email = data.getEmail();
+		this.password = data.getPassWord();
+	}
+
 	@Id
 	@GeneratedValue(strategy =GenerationType.IDENTITY)
 	private long id;

@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.araujowp.samplebank.domain.user.Transaction;
+import com.araujowp.samplebank.domain.transaction.Transaction;
 import com.araujowp.samplebank.domain.user.User;
 import com.araujowp.samplebank.dtos.TransactionDTO;
 import com.araujowp.samplebank.repositories.TransactionRepository;

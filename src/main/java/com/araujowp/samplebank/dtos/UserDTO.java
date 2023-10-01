@@ -11,12 +11,12 @@ import lombok.Getter;
 @Getter
 public class UserDTO {
 
-	private String firtName;
+	private String firstName;
 	private String lastName;
 	private String document;
 	private BigDecimal balance;
 	private UserType UserType;
 	private String email;
-	private String passWord;
+	private String password;
 	
 }

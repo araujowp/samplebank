@@ -29,12 +29,13 @@ import lombok.Setter;
 public class User {
 	
 	public User(UserDTO data) {
-		this.firstName = data.getFirtName();
+		this.firstName = data.getFirstName();
 		this.lastName = data.getLastName();
 		this.balance = data.getBalance();
+		this.document = data.getDocument();
 		this.userType = data.getUserType();
 		this.email = data.getEmail();
-		this.password = data.getPassWord();
+		this.password = data.getPassword();
 	}
 
 	@Id

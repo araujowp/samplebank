@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 public class TransactionDTO {
 
-	private BigDecimal amount;
+	private BigDecimal value;
 	private long senderId;
 	private long receiverId;
 	

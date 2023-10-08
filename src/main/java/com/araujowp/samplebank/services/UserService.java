@@ -11,6 +11,8 @@ import com.araujowp.samplebank.domain.user.UserType;
 import com.araujowp.samplebank.dtos.UserDTO;
 import com.araujowp.samplebank.repositories.UserRepository;
 
+import javassist.NotFoundException;
+
 @Service
 public class UserService {
 
@@ -22,13 +24,13 @@ public class UserService {
 			throw new Exception("Lojistas não podem fazer transações");
 		}
 		
-		if(sender.getBalance().compareTo(amount)>0) {
+		if(sender.getBalance().compareTo(amount) < 0) {
 			throw new Exception("Saldo insuficiente");
 		}
 	}
 	
 	public User fingById(long id) throws Exception{
-		return this.userRepository.findById(id).orElseThrow();
+		return this.userRepository.findById(id).orElseThrow(()-> new Exception("usuario não encontrado"));
 	}
 
 	public void saveUser(User user) {

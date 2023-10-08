@@ -16,13 +16,20 @@ public class NotificationService {
 	private RestTemplate restTemplate;
 	
 	public void sendNotification(User user, String message) throws Exception {
-		
+
 		String email = user.getEmail();
-		NotificationDTO notificationRequest = new NotificationDTO(email, message);
-		ResponseEntity<String> notificationResponse = restTemplate.postForEntity("http://o4d9z.mocklab.io/notify" , notificationRequest, String.class);
-		
-		if(!(notificationResponse.getStatusCode() == HttpStatus.OK)) {
-			throw new Exception("Service de notificação esta indisponivel");
+
+		try {			
+			NotificationDTO notificationRequest = new NotificationDTO(email, message);
+			
+			ResponseEntity<String> notificationResponse = restTemplate.postForEntity("http://o4d9z.mocklab.io/notify" , notificationRequest, String.class);
+			
+			if(!(notificationResponse.getStatusCode() == HttpStatus.OK)) {
+				throw new Exception("Service de notificação esta indisponivel");
+			}
+		}catch (Exception e) {
+			System.out.println("Não foi possivel notificar " + e.getMessage());
+//			throw new Exception("Falha ao conectar no serviço de comunicação");
 		}
 	}
 }
